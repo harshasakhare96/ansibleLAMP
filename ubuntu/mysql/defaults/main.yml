@@ -1,0 +1,18 @@
+---
+wp_version: 4.0
+wp_install_dir: /var/sites/awesome_wordpress_site
+wp_db_name: wordpress
+wp_db_user: wordpress
+wp_db_password: Har20sha!
+wp_db_host: localhost
+wp_db_charset: utf8
+wp_db_collate: ''
+wp_table_prefix: 'wp_'
+wp_debug: false
+
+wp_mysql_enable: true
+wp_mysql_db_create: true
+wp_mysql_site_restore_saved_db: false
+wp_backup_local_path: "{{ playbook_dir }}/_private/backup"
+wp_database_backup: "{{ wp_backup_local_path }}/{{ wp_site_name }}.sql"
+wp_site_name: "{{ wp_apache_hostname | default('example') }}"

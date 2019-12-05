@@ -1,0 +1,28 @@
+---
+- hosts: ansible_servers
+  become: yes
+  gather_facts: true
+  
+  tasks:
+          - name: yum update
+            yum: name=* state=latest
+
+          - name: install httpd service
+            yum: name=httpd state=present
+          
+          - name: start the service
+            service: name=httpd state=started  
+          
+          - name: create index.html in /var/www
+            file:
+                 path: /var/www/index.html
+                 state: touch
+
+          - name: save curl ouput in index.html
+            shell: curl http://169.254.169.254/latest/meta-data/instance-id > /var/www/html/index.html
+  
+          - name: restart httpd service
+            # become: true
+            service: name=httpd state=restarted
+
+

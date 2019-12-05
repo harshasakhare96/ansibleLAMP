@@ -1,0 +1,6 @@
+---
+# handlers file for wp-install-config
+
+- name: restart httpd
+  service: name=httpd state=restarted
+  become: yes

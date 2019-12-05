@@ -1,0 +1,7 @@
+---
+- hosts: ansible_servers
+  become: yes
+  gather_facts: false
+  roles:
+          - wp-dependencies
+          - wp-install-config

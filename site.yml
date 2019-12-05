@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: yes
+  gather_facts: true
+
+  roles:
+       - server
+       - wordpress
