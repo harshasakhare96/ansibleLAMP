@@ -1,0 +1,22 @@
+service: gitlab-example
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  hello:
+    handler: handler.js
+    events:
+      - http: GET hello
+
+plugins:
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: 'api.dev.goodworker.in'
+    basePath: ''
+    stage: dev
+    createRoute53Record: true
+    certificateName: '*.dev.goodworker.in'
+
